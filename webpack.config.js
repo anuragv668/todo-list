@@ -10,16 +10,18 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   module: {
-    rules: {
+    rules: [
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(jpg|png)$\i,
+        test: /\.(jpg|png)$/i,
         use: 'asset-resource',
       },
-    },
+    ],
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [new HtmlWebpackPlugin({
+    title: "todo-list"
+  })],
 }
