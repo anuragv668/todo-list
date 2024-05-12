@@ -1,4 +1,8 @@
-// ALL THE DOM TASKS WILL BE HANDLED HERE
+// ALL THE DOM TASKS ARE HANDLED HERE
+
+// importing modules
+import logic from './modules/logic.js';
+
 
 // importing styles
 import "./styles/style.css";
@@ -7,21 +11,14 @@ import "./styles/sidebar.css";
 import "./styles/content.css";
 
 
-//heading
 const body = document.querySelector('body');
-const heading = document.createElement('h1');
-heading.textContent = "To Do List";
-heading.classList.add("heading");
-body.appendChild(heading);
-
 
 //sidebar
-const sidebar = document.createElement('div');
-sidebar.classList.add('sidebar');
-body.appendChild(sidebar);
-
+const sidebar = document.querySelector('.sidebar');
 
 //content or list items
-const content = document.createElement('div');
-content.classList.add('content');
-body.appendChild(content);
+const content = document.querySelector('.content');
+
+//dialog for taking user input for tasks
+const dialog = document.createElement("dialog");
+
