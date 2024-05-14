@@ -2,12 +2,12 @@
 
 
 //task factory function
-function createTask(title, description, priority, dueDate) {
+function createTask(title, dueDate, priority, description) {
   return {
     title,
-    description,
+    dueDate,
     priority,
-    dueDate
+    description
   }
 }
 
@@ -28,6 +28,9 @@ function returnList() {
 }
 
 export default {
-  createTask
+  createTask,
+  addToList,
+  removeFromList,
+  returnList
 };
 

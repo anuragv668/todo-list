@@ -1,7 +1,7 @@
 // ALL THE DOM TASKS ARE HANDLED HERE
 
 // importing modules
-// import logic from './modules/logic.js';
+import logic from './modules/logic.js';
 
 
 // importing styles
@@ -20,11 +20,22 @@ const content = document.querySelector('.content');
 //dialog for taking user input for tasks
 const dialog = content.querySelector("dialog");
 
+//form 
+const form = content.querySelector('form');
+
 const addTaskBtn = content.querySelector('.addtask');
 addTaskBtn.addEventListener("click", () => {dialog.showModal()});
 
 const submitbtn = dialog.querySelector('.submitbtn')
 submitbtn.addEventListener("click", (e) => {
+  //prevents default action
   e.preventDefault();
+
+  //gets the form data 
+  const formData = new FormData(form);
+
+
+  logic.addToList(logic.createTask(...formData.values()));
+  console.log(logic.returnList());
   dialog.close();
 });
