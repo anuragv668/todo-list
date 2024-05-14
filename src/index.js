@@ -9,22 +9,36 @@ import "./styles/style.css";
 import "./styles/sidebar.css";
 import "./styles/content.css";
 import "./styles/dialog.css";
+import "./styles/priority.css";
 
+const sidebar = document.querySelector('.sidebar'); //sidebar
 
-//sidebar
-const sidebar = document.querySelector('.sidebar');
+const content = document.querySelector('.content'); //main content
 
-//content or list items
-const content = document.querySelector('.content');
+const dialog = content.querySelector("dialog"); //dialog for taking user input for tasks
 
-//dialog for taking user input for tasks
-const dialog = content.querySelector("dialog");
+const form = content.querySelector('form'); //formData
 
-//form 
-const form = content.querySelector('form');
+const taskList = content.querySelector('.taskList'); //list for all tasks
 
-const addTaskBtn = content.querySelector('.addtask');
+const addTaskBtn = content.querySelector('.addtask'); //button for adding task
 addTaskBtn.addEventListener("click", () => {dialog.showModal()});
+
+function printTasks(arr, givenContainer) {
+  for (let i = 0; i < arr.length; i++) {
+    const taskContainer = document.createElement('div');
+    const priority = document.createElement('div');
+    priority.classList.add(arr[i]['priority']);
+    taskContainer.appendChild(priority);
+    givenContainer.appendChild(taskContainer);
+  }
+}
+
+function emptyTasks(container) {
+  while(container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+}
 
 const submitbtn = dialog.querySelector('.submitbtn')
 submitbtn.addEventListener("click", (e) => {
@@ -34,8 +48,9 @@ submitbtn.addEventListener("click", (e) => {
   //gets the form data 
   const formData = new FormData(form);
 
-
   logic.addToList(logic.createTask(...formData.values()));
-  console.log(logic.returnList());
+  let rList = logic.returnList();
+  emptyTasks(taskList);
+  printTasks(rList, taskList);
   dialog.close();
 });

@@ -1,0 +1,19 @@
+.low,
+.medium,
+.high { 
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}
+
+.low {
+  background-color: green;
+}
+
+.medium {
+  background-color: orange;
+}
+
+.high {
+  background-color: red;
+}
