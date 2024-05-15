@@ -3,6 +3,8 @@ dialog {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border: 3px solid #435334;
+  border-radius: 15px;
 }
 
 form {
@@ -11,8 +13,22 @@ form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;
+  color: #435334;
+  background-color: #CEDEBD;
+  font-weight: 700;
 }
 
 .submitbtn {
   grid-column: 1 / 3;
+  color: #CEDEBD;
+  background-color: #435334;
+  border: none;
+  height: 2rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.submitbtn:hover {
+  font-size: 1.1rem;
 }

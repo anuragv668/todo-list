@@ -1,5 +1,13 @@
 .taskContainer {
   display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  border: 3px solid #435334;
+  background-color: #CEDEBD;
+  padding: 5px;
+  border-radius: 30px;
+  font-weight: 700;
+  color: #435334;
 }
 
 .low,

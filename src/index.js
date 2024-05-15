@@ -9,7 +9,7 @@ import "./styles/style.css";
 import "./styles/sidebar.css";
 import "./styles/content.css";
 import "./styles/dialog.css";
-import "./styles/priority.css";
+import "./styles/task.css";
 
 const sidebar = document.querySelector('.sidebar'); //sidebar
 
@@ -19,6 +19,11 @@ const dialog = content.querySelector("dialog"); //dialog for taking user input f
 
 const form = content.querySelector('form'); //formData
 
+const date = document.getElementById('date');
+const today = new Date().toISOString().split('T')[0];
+date.setAttribute('min', today);
+date.setAttribute('value', today);
+
 const taskList = content.querySelector('.taskList'); //list for all tasks
 
 const addTaskBtn = content.querySelector('.addtask'); //button for adding task
@@ -27,9 +32,23 @@ addTaskBtn.addEventListener("click", () => {dialog.showModal()});
 function printTasks(arr, givenContainer) {
   for (let i = 0; i < arr.length; i++) {
     const taskContainer = document.createElement('div');
+    taskContainer.classList.add('taskContainer');
     const priority = document.createElement('div');
     priority.classList.add(arr[i]['priority']);
     taskContainer.appendChild(priority);
+
+    const task = document.createElement('div');
+    task.textContent = arr[i]['title'];
+    taskContainer.appendChild(task);
+    
+    // const desc = document.createElement('div');
+    // desc.textContent = arr[i]['description'];
+    // taskContainer.appendChild(desc);
+    
+    const dateCont = document.createElement('div');
+    dateCont.textContent = arr[i]['dueDate'];
+    taskContainer.appendChild(dateCont);
+
     givenContainer.appendChild(taskContainer);
   }
 }

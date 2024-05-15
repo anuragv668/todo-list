@@ -3,4 +3,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
+}
+
+.taskList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.addtask {
+  color: #CEDEBD;
+  background-color: #435334;
+  border: none;
+  height: 2rem;
+  width: 25%;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.addtask:hover {
+  font-size: 1.2rem;
+  cursor: pointer;
 }
