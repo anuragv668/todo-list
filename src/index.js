@@ -49,6 +49,15 @@ function printTasks(arr, givenContainer) {
     dateCont.textContent = arr[i]['dueDate'];
     taskContainer.appendChild(dateCont);
 
+    const deleteTask = document.createElement('div');
+    deleteTask.textContent = 'Delete';
+    deleteTask.addEventListener('click', () => {
+      logic.removeFromList(i);
+      emptyTasks(givenContainer);
+      printTasks(arr, givenContainer);
+    });
+    taskContainer.appendChild(deleteTask);
+
     givenContainer.appendChild(taskContainer);
   }
 }
