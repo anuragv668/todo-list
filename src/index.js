@@ -15,7 +15,11 @@ const sidebar = document.querySelector('.sidebar'); //sidebar
 
 const content = document.querySelector('.content'); //main content
 
-const dialog = content.querySelector("dialog"); //dialog for taking user input for tasks
+const dialog = content.querySelector(".dialog"); //dialog for taking user input for tasks
+
+const descDialog = content.querySelector('.descDialog');
+
+const editDialog = content.querySelector('.editDialog');
 
 const form = content.querySelector('form'); //formData
 
@@ -37,17 +41,22 @@ function printTasks(arr, givenContainer) {
     priority.classList.add(arr[i]['priority']);
     taskContainer.appendChild(priority);
 
+    const dateCont = document.createElement('div');
+    dateCont.textContent = arr[i]['dueDate'];
+    taskContainer.appendChild(dateCont);
+
     const task = document.createElement('div');
     task.textContent = arr[i]['title'];
     taskContainer.appendChild(task);
     
-    // const desc = document.createElement('div');
-    // desc.textContent = arr[i]['description'];
-    // taskContainer.appendChild(desc);
-    
-    const dateCont = document.createElement('div');
-    dateCont.textContent = arr[i]['dueDate'];
-    taskContainer.appendChild(dateCont);
+    const desc = document.createElement('div');
+    desc.textContent = "Description";
+    desc.addEventListener('click', () => {
+      descDialog.showModal();
+      descDialog.querySelector('.descriptionBody').textContent = arr[i]['description'];
+      descDialog.querySelector('.closeDescription').addEventListener('click', () => {descDialog.close()});
+    });
+    taskContainer.appendChild(desc); 
 
     const deleteTask = document.createElement('div');
     deleteTask.textContent = 'Delete';
@@ -82,3 +91,4 @@ submitbtn.addEventListener("click", (e) => {
   printTasks(rList, taskList);
   dialog.close();
 });
+

@@ -18,7 +18,8 @@ form {
   font-weight: 700;
 }
 
-.submitbtn {
+.submitbtn,
+.savebtn{
   grid-column: 1 / 3;
   color: #CEDEBD;
   background-color: #435334;
@@ -31,4 +32,29 @@ form {
 
 .submitbtn:hover {
   font-size: 1.1rem;
+}
+
+.descriptionDialogContainer {
+  min-width: 200px;
+  max-width: 40ch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  justify-content: space-around;
+}
+
+.descriptionBody {
+  padding: 10px;
+}
+
+.closeDescription {
+  width: 50%;
+  color: #CEDEBD;
+  background-color: #435334;
+  border: none;
+  height: 1.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: 700;
 }

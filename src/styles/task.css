@@ -1,7 +1,7 @@
 .taskContainer {
   display: flex;
   gap: 20px;
-  justify-content: space-between;
+  justify-content: space-around;
   border: 3px solid #435334;
   background-color: #CEDEBD;
   padding: 5px;
