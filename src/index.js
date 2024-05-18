@@ -70,13 +70,14 @@ function printTasks(arr, givenContainer) {
     givenContainer.appendChild(taskContainer);
   }
 }
-
+//removes all child elements of a given container
 function emptyTasks(container) {
   while(container.firstChild) {
     container.removeChild(container.firstChild);
   }
 }
 
+//submits the form
 const submitbtn = dialog.querySelector('.submitbtn')
 submitbtn.addEventListener("click", (e) => {
   //prevents default action
