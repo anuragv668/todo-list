@@ -24,7 +24,7 @@ function removeFromList(index) {
 }
 
 function replace(index, object) {
-  list.splice(index, 1, object);
+  list[index] = object;
 }
 
 function returnList() {

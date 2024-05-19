@@ -73,7 +73,6 @@ const editTask = (container, arr, index, givenContainer) => {
   const edit = document.createElement('div');
   edit.textContent = 'edit';
   edit.addEventListener('click', () => {
-    editDialog.showModal();
 
     let editTitle = editDialog.querySelector('#title');
     editTitle.value = arr[index]['title'];
@@ -95,12 +94,17 @@ const editTask = (container, arr, index, givenContainer) => {
 
     let editDescription = editDialog.querySelector('#desc');
     editDescription.value = arr[index]['description'];
-    
-    let form = editDialog.querySelector('.editForm');
+    editDialog.showModal(); 
+    let editform = editDialog.querySelector('.editForm');
+
+    // let newSaveChangesBtn = editDialog.createElement(elem);
+    // newSaveChangesBtn.classList.add('saveChangesBtn');
     let saveChangesBtn = editDialog.querySelector('.saveChangesBtn');
-    saveChangesBtn.addEventListener('click', (e) => {
+    let newSaveChangesBtn = saveChangesBtn.cloneNode(true);
+    saveChangesBtn.parentNode.replaceChild(newSaveChangesBtn, saveChangesBtn);
+    newSaveChangesBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const formData = new FormData(form); 
+      const formData = new FormData(editform);
       logic.replace(index, logic.createTask(...formData.values()));
       emptyTasks(givenContainer);
       printTasks(arr, givenContainer);
