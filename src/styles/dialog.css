@@ -19,7 +19,7 @@ form {
 }
 
 .submitbtn,
-.savebtn{
+.saveChangesBtn{
   grid-column: 1 / 3;
   color: #CEDEBD;
   background-color: #435334;

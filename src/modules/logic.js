@@ -23,6 +23,10 @@ function removeFromList(index) {
   list.splice(index , 1);
 }
 
+function replace(index, object) {
+  list.splice(index, 1, object);
+}
+
 function returnList() {
   return list;
 }
@@ -31,6 +35,7 @@ export default {
   createTask,
   addToList,
   removeFromList,
-  returnList
+  returnList,
+  replace
 };
 

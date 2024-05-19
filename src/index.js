@@ -1,8 +1,6 @@
 // ALL THE DOM TASKS ARE HANDLED HERE
-
 // importing modules
 import logic from './modules/logic.js';
-
 
 // importing styles
 import "./styles/style.css";
@@ -12,15 +10,10 @@ import "./styles/dialog.css";
 import "./styles/task.css";
 
 const sidebar = document.querySelector('.sidebar'); //sidebar
-
 const content = document.querySelector('.content'); //main content
-
 const dialog = content.querySelector(".dialog"); //dialog for taking user input for tasks
-
 const descDialog = content.querySelector('.descDialog');
-
-const editDialog = content.querySelector('.editDialog');
-
+const editDialog = content.querySelector('.editdialog');
 const form = content.querySelector('form'); //formData
 
 // setting date input 
@@ -65,15 +58,57 @@ const setDescription = (container, obj) => {
     container.appendChild(desc);
 };
 
-const setDelete = (container, obj, index, givenContainer) => {
+const setDelete = (container, arr, index, givenContainer) => {
   const deleteTask = document.createElement('div');
   deleteTask.textContent = 'Delete';
   deleteTask.addEventListener('click', () => {
     logic.removeFromList(index);
     emptyTasks(givenContainer);
-    printTasks(obj, givenContainer);
+    printTasks(arr, givenContainer);
   });
   container.appendChild(deleteTask);
+};
+
+const editTask = (container, arr, index, givenContainer) => {
+  const edit = document.createElement('div');
+  edit.textContent = 'edit';
+  edit.addEventListener('click', () => {
+    editDialog.showModal();
+
+    let editTitle = editDialog.querySelector('#title');
+    editTitle.value = arr[index]['title'];
+
+    let editDate = editDialog.querySelector('#date');
+    editDate.value = arr[index]['dueDate'];
+    
+    let priorityValue = arr[index]['priority'];
+    let editPriorityHigh = editDialog.querySelector('#high');
+    let editPriorityMedium= editDialog.querySelector('#medium');
+    let editPriorityLow = editDialog.querySelector('#low');
+    if (priorityValue === 'high') {
+      editPriorityHigh.checked = true;
+    } else if (priorityValue === 'medium') {
+      editPriorityMedium.checked = true;
+    } else {
+      editPriorityLow.checked = true;
+    }
+
+    let editDescription = editDialog.querySelector('#desc');
+    editDescription.value = arr[index]['description'];
+    
+    let form = editDialog.querySelector('.editForm');
+    let saveChangesBtn = editDialog.querySelector('.saveChangesBtn');
+    saveChangesBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form); 
+      logic.replace(index, logic.createTask(...formData.values()));
+      emptyTasks(givenContainer);
+      printTasks(arr, givenContainer);
+      editDialog.close();
+    });
+
+  });
+  container.appendChild(edit);
 };
 
 function printTasks(arr, givenContainer) {
@@ -85,6 +120,7 @@ function printTasks(arr, givenContainer) {
     setDueDate(taskContainer, arr[i]); 
     setTitle(taskContainer, arr[i]); 
     setDescription(taskContainer, arr[i]);
+    editTask(taskContainer, arr, i, givenContainer);
     setDelete(taskContainer, arr, i, givenContainer); 
 
     givenContainer.appendChild(taskContainer);
