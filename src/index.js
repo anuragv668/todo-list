@@ -156,3 +156,5 @@ submitbtn.addEventListener("click", (e) => {
   dialog.close();
 });
 
+logic.loadFromLocalStorage();  //accesses the local storage
+printTasks(logic.returnList(), taskList);
