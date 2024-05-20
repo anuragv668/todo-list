@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script defer src="bundle.js"></script></head>
+  <body>
+    <h1 class="heading">To Do List</h1> 
+    <div class="content">
+      <div class="taskList"></div>
+      <button class="addtask">Add Task</button>
+      <dialog class="dialog">
+        <form type="dialog">
+
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" placeholder="write title" required >
+
+            <label for="date">Date:</label>
+            <input type="date" name="date" id="date">
+
+            <div class="radioLabel">Priority</div>
+            <div class="radioCont">
+              <div class="radios">
+                <input type="radio" name="priority" value="high" id="high">
+                <label for="high">High</label>
+              </div>
+              <div class="radios">
+                <input type="radio" name="priority" value="medium" id="medium">
+                <label for="medium">Medium</label>
+              </div>
+              <div class="radios">
+                <input type="radio" name="priority" value="low" id="low" checked >
+                <label for="low">Low</label>
+              </div>
+            </div>
+
+            <label for="description">Description:</label>
+            <textarea name="description" rows="4" placeholder="write description"></textarea>
+            <button class="submitbtn">Submit</button>
+        </form>
+      </dialog>
+      <dialog class="descDialog">
+        <div class="descriptionDialogContainer">
+          <div class="descriptionBody"></div>
+          <button class="closeDescription">Close</button>
+        </div>
+      </dialog>
+
+      <dialog class="editdialog">
+        <form type="dialog" class='editForm'>
+
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" placeholder="write title" required >
+
+            <label for="date">Date:</label>
+            <input type="date" name="date" id="date">
+
+            <div class="radioLabel">Priority</div>
+            <div class="radioCont">
+              <div class="radios">
+                <input type="radio" name="priority" value="high" id="high">
+                <label for="high">High</label>
+              </div>
+              <div class="radios">
+                <input type="radio" name="priority" value="medium" id="medium">
+                <label for="medium">Medium</label>
+              </div>
+              <div class="radios">
+                <input type="radio" name="priority" value="low" id="low" checked >
+                <label for="low">Low</label>
+              </div>
+            </div>
+
+            <label for="description">Description:</label>
+            <textarea name="description" rows="4" placeholder="write description" id="desc"></textarea>
+
+            <button class="saveChangesBtn">Save Changes</button>
+        </form>
+      </dialog>
+
+    </div>
+  </body>
+</html>
