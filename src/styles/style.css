@@ -7,7 +7,7 @@
 body {
   height: 100vh;
   display: grid;
-  grid-template: auto 1fr / 1fr 4fr;
+  grid-template: auto 1fr / 1fr;
 }
 
 .heading {
