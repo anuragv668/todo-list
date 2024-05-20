@@ -4,7 +4,6 @@ import logic from './modules/logic.js';
 
 // importing styles
 import "./styles/style.css";
-import "./styles/sidebar.css";
 import "./styles/content.css";
 import "./styles/dialog.css";
 import "./styles/task.css";
@@ -15,7 +14,7 @@ const dialog = content.querySelector(".dialog"); //dialog for taking user input 
 const descDialog = content.querySelector('.descDialog');
 const editDialog = content.querySelector('.editdialog');
 const form = content.querySelector('form'); //formData
-
+form.reset();
 // setting date input 
 const date = document.getElementById('date');
 const today = new Date().toISOString().split('T')[0];
@@ -49,6 +48,7 @@ const setTitle = (container, obj) => {
 
 const setDescription = (container, obj) => {
     const desc = document.createElement('div');
+    desc.classList.add('pointer');
     desc.textContent = "Description";
     desc.addEventListener('click', () => {
       descDialog.showModal();
@@ -60,6 +60,7 @@ const setDescription = (container, obj) => {
 
 const setDelete = (container, arr, index, givenContainer) => {
   const deleteTask = document.createElement('div');
+  deleteTask.classList.add('pointer');
   deleteTask.textContent = 'Delete';
   deleteTask.addEventListener('click', () => {
     logic.removeFromList(index);
@@ -71,6 +72,7 @@ const setDelete = (container, arr, index, givenContainer) => {
 
 const editTask = (container, arr, index, givenContainer) => {
   const edit = document.createElement('div');
+  edit.classList.add('pointer');
   edit.textContent = 'edit';
   edit.addEventListener('click', () => {
 
@@ -150,6 +152,7 @@ submitbtn.addEventListener("click", (e) => {
   let rList = logic.returnList();
   emptyTasks(taskList);
   printTasks(rList, taskList);
+  form.reset();
   dialog.close();
 });
 
