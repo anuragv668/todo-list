@@ -4,16 +4,16 @@
 const list = [];
 
 function saveToLocalStorage() {
-  localStorage.setItem('taskList', JSON.stringify(list));
+  localStorage.setItem("taskList", JSON.stringify(list));
 }
 
 function loadFromLocalStorage() {
-  const storedList = localStorage.getItem('taskList');
+  const storedList = localStorage.getItem("taskList");
   if (storedList) {
     const parsedList = JSON.parse(storedList);
     // Clear the current list and add the loaded tasks
     list.length = 0; // Clear the existing list
-    parsedList.forEach(task => list.push(task));
+    parsedList.forEach((task) => list.push(task));
   }
 }
 
@@ -23,18 +23,18 @@ function createTask(title, dueDate, priority, description) {
     title,
     dueDate,
     priority,
-    description
-  }
+    description,
+  };
 }
 
-//list operations 
+//list operations
 function addToList(obj) {
   list.push(obj);
   saveToLocalStorage();
 }
 
 function removeFromList(index) {
-  list.splice(index , 1);
+  list.splice(index, 1);
   saveToLocalStorage();
 }
 
@@ -54,6 +54,5 @@ export default {
   returnList,
   replace,
   saveToLocalStorage,
-  loadFromLocalStorage
+  loadFromLocalStorage,
 };
-
